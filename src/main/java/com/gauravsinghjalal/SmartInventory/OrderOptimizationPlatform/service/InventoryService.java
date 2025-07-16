@@ -13,4 +13,6 @@ public interface InventoryService {
     List<InventoryDto> getLowStockItems();
 
 
+
+    InventoryItem getUserById(Long userId);
 }

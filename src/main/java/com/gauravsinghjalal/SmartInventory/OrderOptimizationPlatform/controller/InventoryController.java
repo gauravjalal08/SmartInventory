@@ -1,8 +1,11 @@
 package com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.controller;
 
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.dto.InventoryDto;
+import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.entity.InventoryItem;
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +22,13 @@ public class InventoryController  {
 
 
     }
+    @GetMapping("{id}")
+    public ResponseEntity<InventoryItem> getUserById(@PathVariable("id") Long userId){
+        InventoryItem item=  inventoryService.getUserById(userId);
+       return new ResponseEntity<>(item, HttpStatus.OK);
+    }
+
+
 
     @GetMapping
     public List<InventoryDto> getAllItems() {
@@ -29,7 +39,6 @@ public class InventoryController  {
     public InventoryDto updateItem(@PathVariable Long id, @RequestBody InventoryDto dto) {
         return inventoryService.updateItem(id, dto);
     }
-
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id) {
         inventoryService.deleteItem(id);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,7 +67,12 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public void deleteItem(Long id) {
+        System.out.println("Attempting to delete item with id: " + id);
+        if (!inventoryRepository.existsById(id)){
+            throw new RuntimeException("Item not found with id: " + id);
+        }
         inventoryRepository.deleteById(id);
+        System.out.println("Item deleted with id: " + id);
     }
 
     @Override
@@ -74,6 +80,14 @@ public class InventoryServiceImpl implements InventoryService {
         return inventoryRepository.findByQuantityLessThan(10)
                 .stream().map(this::mapToDto)
                 .collect(Collectors.toList());
+    }
+
+
+
+    @Override
+    public InventoryItem getUserById(Long userId) {
+        return inventoryRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Inventory item not found with ID: " + userId));
     }
 
 
