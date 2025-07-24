@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: smart-inventory-app
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    autoDeploy: true
+    runtime: docker
