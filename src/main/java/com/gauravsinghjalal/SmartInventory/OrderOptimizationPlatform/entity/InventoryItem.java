@@ -21,4 +21,6 @@ public class InventoryItem {
     private int reorderThreshold;
     private LocalDateTime lastUpdated;
     private String supplier;
+    private String orderStatus;
+
 }

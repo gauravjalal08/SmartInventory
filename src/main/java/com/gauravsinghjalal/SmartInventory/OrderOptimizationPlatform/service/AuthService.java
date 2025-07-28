@@ -2,7 +2,6 @@ package com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.service;
 
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.dto.AuthRequest;
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.dto.AuthResponse;
-import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.entity.Role;
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.entity.User;
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.jwt.JwtUtils;
 import com.gauravsinghjalal.SmartInventory.OrderOptimizationPlatform.repository.UserRepositry;

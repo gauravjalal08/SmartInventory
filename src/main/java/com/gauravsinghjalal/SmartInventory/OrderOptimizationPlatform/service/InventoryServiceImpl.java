@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,7 +15,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Autowired
     private InventoryRepository inventoryRepository;
-
+   //mapToDto
     private InventoryDto mapToDto(InventoryItem inventoryItem) {
         InventoryDto dto = new InventoryDto();
         dto.setId(inventoryItem.getId());
@@ -24,9 +23,10 @@ public class InventoryServiceImpl implements InventoryService {
         dto.setSku(inventoryItem.getSku());
         dto.setQuantity(inventoryItem.getQuantity());
         dto.setReorderThreshold(inventoryItem.getReorderThreshold());
+        dto.setOrderStatus(inventoryItem.getOrderStatus());
         return dto;
     }
-
+    //mapToEntity
     private InventoryItem mapToEntity(InventoryDto dto) {
         InventoryItem item = new InventoryItem();
         item.setId(dto.getId());
@@ -35,6 +35,7 @@ public class InventoryServiceImpl implements InventoryService {
         item.setQuantity(dto.getQuantity());
         item.setReorderThreshold(dto.getReorderThreshold());
         item.setLastUpdated(LocalDateTime.now());
+        item.setOrderStatus(dto.getOrderStatus());
         return item;
     }
 
